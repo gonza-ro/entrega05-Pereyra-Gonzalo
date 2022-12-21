@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express');
 
 // Declarar constantes y arrays
 let productos = []
