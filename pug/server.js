@@ -1,35 +1,35 @@
+/* Importando las depedencias */
 import express from 'express'
 
-// Declarar constantes y arrays
-let productos = []
 
+/* Instanciar nuestras constantes */
 const app = express();
 
-// Funcionalidades de nuestro servidor
-app.use(express.urlencoded({extended: true}))
+let productos = []
 
+/* Funcionalidades del servidor */
 app.set('views', './views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
+// app.use(express.urlencoded({extended: false}))
 
 app.get('/formulario', (req, res) => {
-    res.render('form', {productos});
-});
+    res.render('form', req.query);
+})
 
-app.get('/table', (req, res) => {
-    res.render('form1', {productos});
+app.get('/', (req, res) => {
+    res.render('formulario', {productos});
 });
-
 
 app.post('/datos', (req, res) => {
     productos.push(req.body)
     console.log(productos)
-    res.redirect('/tabla')
+    res.send(productos)
+    res.redirect(`/`)
 });
 
 
 
-
-/* Configurar el servidor */
+/* Configuramos el servidor */
 const PORT = 8080;
 const server = app.listen(PORT, () => {
     console.log('Servidor corriendo en el puerto: ', PORT);
