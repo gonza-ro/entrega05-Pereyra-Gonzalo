@@ -25,7 +25,7 @@ app.set('view engine', "hbs");
 app.set("views", "./views");
 
 app.get('/formulario', (req, res) => {
-        res.render('datos', productos)
+        res.render('datos', {productos})
     
 })
 
