@@ -4,15 +4,10 @@ import handlebars from "express-handlebars"
 
 /* Declarar nuestras constantes */
 const app = express()
-app.use(express.urlencoded({ extended: true }));
-
-
 
 let productos = []
 
 // Establecemos la configuración de handlebars
-app.use(express.static('./handlebars'));
-
 app.engine(
     "hbs",
     handlebars.engine  ({
@@ -25,25 +20,15 @@ app.set('view engine', "hbs");
 app.set("views", "./views");
 
 app.get('/formulario', (req, res) => {
-        res.render('datos', productos)
-    
+    res.render('datos', {productos})
 })
 
 app.get('/tabla', (req, res) => {
-    console.log(productos.length)
     res.render('tabla', {productos});
 });
 
-
-
 app.post('/datos', (req, res) => {
-    const {nombre, precio, url} = req.body
-    const producto = {
-        'nombre':nombre,
-        'precio':precio,
-        'url':url
-    }
-    productos.push(producto)
+    productos.push(req.body)
     console.log(productos)
     res.redirect('/tabla')
 });

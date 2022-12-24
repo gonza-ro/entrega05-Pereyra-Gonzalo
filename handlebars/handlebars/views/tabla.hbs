@@ -1,0 +1,45 @@
+
+    {{#if productos.length }}
+    {{!-- {{productos.length}} --}}
+    <div action="/tabla"  class="table-responsive">
+        <table  action="/tabla" class="table table-dark">
+            <tr style="color: rgb(66, 61, 135);"> 
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Url</th>
+            </tr>
+        {{#each productos}}
+                <tr>
+                    <td>{{productos.nombre}}</td>
+                    <td>{{productos.precio}}</td>
+                    <td>{{productos.url}}</td>
+                </tr>
+        {{/each}}        
+        </table>
+        
+        
+        <div>
+            <button href="./formulario" type="button" class="btn btn-success">Volver</button>
+        </div>
+    </div>
+    {{else}}
+    <h3 class="alert alert-danger">No se encontraron datos</h3>
+{{/if}}
+
+
+
+{{!-- {{#if pages }}
+        <nav class="">
+            <ul class="pagination-menu">
+                <div class="flex">
+                    {{#if current == 1}}
+                    <li class="disabled"><a href="/blog/1">1</a></li>
+                    {{else}}
+                    <li class=""><a href="/blog/1">2</a></li>
+                    <li class=""><a href="/blog/1">3</a></li>
+                    <li class=""><a href="/blog/1">4</a></li>
+                    {{/if}}
+                </div>
+            </ul>
+        </nav>
+{{/if}} --}}

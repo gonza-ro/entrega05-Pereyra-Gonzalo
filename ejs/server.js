@@ -23,7 +23,7 @@ app.get('/table', (req, res) => {
 app.post('/datos', (req, res) => {
     productos.push(req.body)
     console.log(productos)
-    res.redirect('/tabla')
+    res.redirect('/table')
 });
 
 

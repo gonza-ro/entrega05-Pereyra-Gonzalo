@@ -4,13 +4,13 @@ import express from 'express'
 
 /* Instanciar nuestras constantes */
 const app = express();
+app.use(express.urlencoded({extended: true}))
 
 let productos = []
 
 /* Funcionalidades del servidor */
 app.set('views', './views');
 app.set('view engine', 'pug');
-// app.use(express.urlencoded({extended: false}))
 
 app.get('/formulario', (req, res) => {
     res.render('form', req.query);
