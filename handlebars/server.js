@@ -32,6 +32,7 @@ app.get('/formulario', (req, res) => {
 app.get('/tabla', (req, res) => {
     console.log(productos.length)
     res.render('tabla', {productos});
+
 });
 
 
@@ -44,7 +45,9 @@ app.post('/datos', (req, res) => {
         'url':url
     }
     productos.push(producto)
+
     console.log(productos)
+    
     res.redirect('/tabla')
 });
 
